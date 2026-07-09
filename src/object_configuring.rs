@@ -3154,11 +3154,8 @@ const ALLOWED_MACRO_COMMANDS: &[(u8, &str, VtVersion)] = &[
     (0xA5, "Change Child Location command", VtVersion::Version2),
     (0xB4, "Change Child Position command", VtVersion::Version2),
     (0xA6, "Change Size command", VtVersion::Version2),
-    (
-        0xA7,
-        "Change Background Colour command",
-        VtVersion::Version2,
-    ),
+    (0xA7, "Change Background Colour command", VtVersion::Version2,),
+
     (0xA8, "Change Numeric Value command", VtVersion::Version2),
     (0xB3, "Change String Value command", VtVersion::Version2),
     (0xA9, "Change End Point command", VtVersion::Version2),
@@ -3209,10 +3206,17 @@ impl ConfigurableObject for Macro {
 
                     ui.label(format!("0x{:02X}", code));
                     ui.label(command_name);
+                    
+                    // TODO: Macro Decoding after we decode the command we need to decode the parameters
+                    
+                    
                     render_index_modifiers(ui, idx, &mut self.commands);
                     ui.end_row();
-
                     idx += 1;
+
+                    
+
+
                 }
             });
 
